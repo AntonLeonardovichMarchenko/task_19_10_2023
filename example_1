@@ -1,0 +1,63 @@
+
+from math import sqrt
+
+
+def square_eq_solver(a, b, c):
+   result = []
+   discriminant = b * b - 4 * a * c
+
+   if discriminant == 0:
+       result.append(-b / (2 * a))
+
+   # else:
+   elif discriminant > 0:
+       result.append((-b + sqrt(discriminant)) / (2 * a))
+       result.append((-b - sqrt(discriminant)) / (2 * a))
+
+   return result
+
+# ========================================================================
+# def test_square_eq_solver(a, b, c):
+#    result = []
+#    discriminant = b * b - 4 * a * c
+#
+#    if discriminant == 0:
+#        result.append(-b / (2 * a))
+#
+#    # else:
+#    elif discriminant > 0:
+#        result.append((-b + sqrt(discriminant)) / (2 * a))
+#        result.append((-b - sqrt(discriminant)) / (2 * a))
+#
+#    return result
+# ========================================================================
+
+def show_result(data):
+   if len(data) > 0:
+       for index, value in enumerate(data):
+           print(f'Корень номер {index+1} равен {value:.02f}')
+   else:
+       print('Уравнение с заданными параметрами не имеет корней')
+
+# ========================================================================
+# def test_show_result(data):
+#    if len(data) > 0:
+#        for index, value in enumerate(data):
+#            print(f'Корень номер {index+1} равен {value:.02f}')
+#    else:
+#        print('Уравнение с заданными параметрами не имеет корней')
+# ========================================================================
+
+def main():
+   a, b, c = map(int, input('нужно ввести три числа через пробел: ').split())
+   result = square_eq_solver(a, b, c)
+   show_result(result)
+
+if __name__ == '__main__':
+   main()
+
+
+# 10x**2 = 0 — единственный корень x=0
+# 2x**2 + 5x — 3 = 0 — у такого уравнения два корня (x1 = 0.5, x2=-3)
+# 10x**2+2 = 0 — у этого уравнения корней нет
+
