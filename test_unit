@@ -1,0 +1,47 @@
+import unittest
+
+
+class theGameTestCase(unittest.TestCase):
+
+
+    def test_who_is_winner(self):
+
+        print('******************** test_who_is_winner ********************')
+        theMainGame.CardTest(4)
+        ret = theGame.Player.getPlayer()
+        print('@@@@@@@@@@@@@@@@@@@@ test_who_is_winner @@@@@@@@@@@@@@@@@@@@')
+
+        self.assertEqual(ret[1] in [0,1,2,3], True)
+        self.assertEqual(ret[0], 0)
+
+    def test_who_is_next(self):
+
+        print('******************** test_who_is_next ********************')
+        current = theGame.Player.nextPlayer(3,0,4)
+        print('@@@@@@@@@@@@@@@@@@@@ test_who_is_next @@@@@@@@@@@@@@@@@@@@')
+
+        self.assertEqual(current, 1)
+
+    def test_the_card(self):
+
+        card = theGame.Card('p', 6)
+
+        self.assertEqual(card.suit, 'p')
+        self.assertEqual(card.superiority, 6)
+
+    def test_the_card_dsc(self):
+        cd = theGame.CardDeck()
+        self.assertEqual(len(cd.Deck), 36)
+
+# ========================================================================
+
+def DoIt():
+    gt = theGameTestCase()
+    gt.test_who_is_winner()
+    gt.test_who_is_next()
+    gt.test_the_card()
+    gt.test_the_card_dsc()
+
+DoIt()
+
+
