@@ -1,0 +1,34 @@
+
+from example import show_result
+from example import square_eq_solver
+
+import pytest
+
+# объявление и вызов паразитных функции zzz и z_test_no_root:
+# никакой отладки при вызове программы
+# def zzz():
+#    print('this is zzz')
+#
+# def z_test_no_root(a=10,b=0,c=2):
+#    res = test_square_eq_solver(a,b,c)
+#
+
+def test_no_root():
+   res = square_eq_solver(10, 0, 2)
+   assert len(res) == 0
+#
+# def main():
+#    a, b, c = map(int, input('нужно ввести три числа через пробел: ').split())
+#    result = test_square_eq_solver(a, b, c)
+#    test_show_result(result)
+#    zzz()   # вызов функции zzz
+#    z_test_no_root(a, b, c) # вызов функции z_test_no_root
+#
+# if __name__ == '__main__':
+#    main()
+#
+
+
+# 10x**2 = 0 — единственный корень x=0
+# 2x**2 + 5x — 3 = 0 — у такого уравнения два корня (x1 = 0.5, x2=-3)
+# 10x**2+2 = 0 — у этого уравнения корней нет
