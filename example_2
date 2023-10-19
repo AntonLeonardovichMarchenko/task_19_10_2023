@@ -1,0 +1,38 @@
+from example import square_eq_solver
+from example import show_result
+import pytest
+
+def x_test_no_root():
+   res = square_eq_solver(10, 0, 2)
+   assert len(res) == 0
+
+def test_no_root():
+   res = square_eq_solver(10, 0, 2)
+   assert len(res) == 0
+
+def x_test_single_root():
+   res = square_eq_solver(10, 0, 0)
+   assert len(res) == 1
+   assert res == [0]
+
+def x_test_multiple_root():
+   res = square_eq_solver(2, 5, -3)
+   assert len(res) == 2
+   assert res == [0.5, -3]
+
+test_no_root()
+
+
+# def main():
+#    a, b, c = map(int, input('нужно ввести три числа через пробел: ').split())
+#    result = square_eq_solver(a, b, c)
+#    show_result(result)
+#
+# if __name__ == '__main__':
+#    main()
+
+# 10x**2 = 0 — единственный корень x=0
+# 2x**2 + 5x — 3 = 0 — у такого уравнения два корня (x1 = 0.5, x2=-3)
+# 10x**2+2 = 0 — у этого уравнения корней нет
+
+
