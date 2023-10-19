@@ -1,0 +1,59 @@
+import unittest
+from example import square_eq_solver
+
+# функция-генератор тестового значения
+def get_result():
+    result = []
+    result.append(0.5)
+    result.append(-3)
+    return result
+
+# Готовность к тестированию средствами unittest:
+# класс SquareEqSolverTestCase наследует unittest.TestCase.
+class SquareEqSolverTestCase(unittest.TestCase):
+
+   def x_test_no_root(self, a, b, c):       # метод "x_test_no_root" это метод класса unittest.TestCase
+                                            # со всеми вытекающими последствиями
+        print('x_test_no_root')
+
+
+   def test_no_root(self):                  # метод "test_no_root"
+       res = square_eq_solver(10, 0, 2)
+       self.assertEqual(len(res), 0)        # метод класса unittest.TestCase и
+                                            # здесь производится сравнение
+                                            # результата выполнения и предполагаемого значения
+
+
+   def test_single_root(self):              # метод "test_single_root"
+       res = square_eq_solver(10, 0, 0)
+       self.assertEqual(len(res), 1)        # метод класса unittest.TestCase
+       self.assertEqual(res, [0])           # метод класса unittest.TestCase
+
+   def test_multiple_root(self):            # метод "test_multiple_root"
+       res = square_eq_solver(2, 5, -3)
+       self.assertEqual(len(res), 2)        # метод класса unittest.TestCase
+       #self.assertEqual(len(res), 3)       # и это тот же метод...
+                                            # Но как такое может быть? ТРИ корня?
+                                            # Вычислил и сравнил...
+       #self.assertEqual(res, [0.5, -3])    # метод класса unittest.TestCase
+       self.assertEqual(res, get_result())  # метод класса unittest.TestCase.
+                                            # Значения для сравнения - это результат
+                                            # выполнения функции
+
+
+   # s = SquareEqSolverTestCase()  # и даже так (БЕЗ определения объекта класса)
+                                   # будут протестированы ВСЕ ТРИ
+                                   # метода класса SquareEqSolverTestCase, если, конечно,
+                                   # он наследует классу unittest.TestCase а если,
+                                   # к тому же, будет вызван метод self.assertEqual
+                                   # класса unittest.TestCase, то при тестировании будет
+                                   # произведено сравнение результатов выполнения
+                                   # тестируемых функций с ПРЕДПОЛАГАЕМЫМИ значениями,
+                                   # которые задаются тестировщиком (или разработчиком),
+                                   # а также результатами выполнения "сторонних" функций.
+                                   # В данном случае это get_result(). Разумеется, что
+                                   # ПРЕДПОЛАГАЕМЫЕ результаты относятся к компетенции
+                                   # этих самых тестировщиков, разработчиков или к
+                                   # результатам выполнения сторонних функций
+# print(s.test_no_root())
+
