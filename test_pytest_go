@@ -1,0 +1,29 @@
+import pytest
+import theGame
+import theMainGame
+
+def test_who_is_winner():
+    print('******************** test_who_is_winner ********************')
+    theMainGame.CardTest(4)
+    ret = theGame.Player.getPlayer()
+    print('@@@@@@@@@@@@@@@@@@@@ test_who_is_winner @@@@@@@@@@@@@@@@@@@@')
+
+    assert(ret[1] in [0, 1, 2, 3], True)
+    assert(ret[0], 0)
+
+def test_who_is_next():
+    print('******************** test_who_is_next ********************')
+    current = theGame.Player.nextPlayer(3, 0, 4)
+    print('@@@@@@@@@@@@@@@@@@@@ test_who_is_next @@@@@@@@@@@@@@@@@@@@')
+
+    assert(current, 1)
+
+def test_the_card():
+    card = theGame.Card('p', 6)
+
+    assert(card.suit, 'p')
+    assert(card.superiority, 6)
+
+def test_the_card_dsc():
+    cd = theGame.CardDeck()
+    assert(len(cd.Deck), 36)
